@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import Toolbar from 'primevue/toolbar'
+  import { useRouter, RouterView } from 'vue-router'
+  import Toolbar from 'primevue/toolbar'
+
+  const router = useRouter()
+  const viewed = () => router.currentRoute.value.path
 </script>
 
 <template>
@@ -11,7 +14,12 @@ import Toolbar from 'primevue/toolbar'
     </template>
 
     <template #center>
-      <Button class="spin" size="large" icon="pi pi-sync pi-spin" severity="help"
+      <Button v-if="viewed() == '/'" class="spin"
+        size="large" icon="pi pi-sync pi-spin" severity="help"
+        raised rounded text />
+
+      <Button v-if="viewed() != '/'" class="spin"
+        size="large" icon="pi pi-home" severity="help"
         raised rounded text as="router-link" to="/" />
     </template>
 
