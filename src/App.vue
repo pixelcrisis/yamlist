@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { useRouter, RouterView } from 'vue-router'
-  import Toolbar from 'primevue/toolbar'
 
   const router = useRouter()
   const viewed = () => router.currentRoute.value.path
@@ -10,7 +9,7 @@
   <Toolbar>
     <template #start>
       <Button icon="pi pi-pencil" severity="info" 
-        rounded text as="router-link" to="/list" />
+        size="small" rounded text as="router-link" to="/list" />
     </template>
 
     <template #center>
@@ -35,9 +34,7 @@
 <style scoped>
   .p-toolbar {
     position: absolute;
-    bottom: 20px;
-    width: 90%;
-    left: 5%;
+    bottom: 30px; left: 30px; right: 30px;
     border-radius: 3rem;
     background: #fff;
   }
