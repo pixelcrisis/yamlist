@@ -1,6 +1,13 @@
+<script setup>
+  import { useLibraryStore } from '@/stores/library'
+
+  const library = useLibraryStore()
+</script>
+
 <template>
   <header>
-    <Button fluid outlined label="Current:" severity="secondary" />
+    <Button fluid outlined :label="library.currName" severity="secondary"
+      as="router-link" to="/list" />
   </header>
   
   <Divider />
@@ -8,6 +15,7 @@
 
 <style scoped>
   .p-button {
-    text-decoration: none !important;
+    line-height: 21px;
+    text-decoration: none;
   }
 </style>
