@@ -10,9 +10,9 @@ import App from './App.vue'
 import router from './router'
 
 import {
-  Toolbar, Divider, Fluid, FocusTrap,
+  Divider, Fluid, FocusTrap,
   InputText, InputIcon, IconField,
-  Button, ButtonGroup
+  Button, ButtonGroup, Card
 } from 'primevue'
 
 const app = createApp(App)
@@ -21,9 +21,10 @@ app.use(PrimeVue, {
   theme: { preset: Aura },
   options: { darkModeSelector: 'html' }
 })
+
+app.component('Card', Card)
 app.component('Fluid', Fluid)
 app.component('Button', Button)
-app.component('Toolbar', Toolbar)
 app.component('Divider', Divider)
 app.component('InputText', InputText)
 app.component('InputIcon', InputIcon)
