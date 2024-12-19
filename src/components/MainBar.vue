@@ -1,6 +1,7 @@
 <script setup>
   import { ref } from 'vue'
   import { Drawer, Toolbar } from 'primevue'
+  import OptPane from './OptPane.vue'
 
   defineProps({ path: { type: String, required: true } })
 
@@ -33,7 +34,7 @@
   </Toolbar>
 
   <Drawer header="Options" v-model:visible="open">
-    
+    <OptPane />
   </Drawer>
 </template>
 
