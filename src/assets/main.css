@@ -1,7 +1,7 @@
 @import './base.css';
 @import 'primeicons/primeicons.css';
 
-#app {
+#app, .overlay {
   padding: 0 30px;
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -22,4 +22,12 @@ section {
 
 .p-button.list {
   margin-bottom: 10px;
+}
+
+.overlay {
+  z-index: 99;
+  padding-top: 100px;
+  text-align: center;
+  padding-bottom: 110px;
+  background-color: var(--p-content-background);
 }

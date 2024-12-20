@@ -15,6 +15,7 @@ export const useLibraryStore = defineStore('library', () => {
     { id: 1, name: 'Suggestions', list: [ ...dummyListB ] }
   ])
 
+  const results = ref({})
   const current = computed(() => listAll.value.find(e => e.active))
 
   function getList (id) {
@@ -24,5 +25,11 @@ export const useLibraryStore = defineStore('library', () => {
     })
   }
 
-  return { listAll, current, getList }
+  function random() {
+    let curr = current.value.list
+    let rand = Math.floor(Math.random() * curr.length)
+    results.value = curr[ rand ]
+  }
+
+  return { listAll, current, results, getList, random }
 })

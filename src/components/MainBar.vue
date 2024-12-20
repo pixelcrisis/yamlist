@@ -3,12 +3,19 @@
   import { Toolbar } from 'primevue'
   import { useSpinnerStore } from '@/stores/spinner'
   import { useOptionsStore } from '@/stores/options'
+  import { useLibraryStore } from '@/stores/library'
 
   defineProps({ path: { type: String, required: true } })
 
   const spinner = useSpinnerStore()
   const options = useOptionsStore()
+  const library = useLibraryStore()
   const hasSpin = computed(() => spinner.spin || spinner.spun)
+
+  function spin() {
+    library.random()
+    spinner.spinList()
+  }
 </script>
 
 <template>
@@ -23,7 +30,7 @@
     <template #center>
       <Button v-if="path == '/' && !hasSpin"
         size="large" icon="pi pi-sync pi-spin" severity="help"
-        raised rounded text @click="spinner.spinList()" />
+        raised rounded text @click="spin" />
 
       <Button v-else-if="spinner.spin"
         size="large" icon="pi pi-angle-double-right" severity="help"

@@ -5,15 +5,14 @@
 </script>
 
 <template>
-  <div class="overlay">  
-    Pick Pane Goes Here
+  <div class="overlay">
+    <h1>Here You Go!</h1>
+    <Button fluid size="large" :label="library.results.title" severity="contrast" />
   </div>
 </template>
 
 <style scoped>
-  .overlay {
-    position: absolute; z-index: 99;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: var(--p-content-background);
+  .p-button {
+    margin-top: 20px;
   }
 </style>

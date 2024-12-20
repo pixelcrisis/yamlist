@@ -4,23 +4,23 @@ import { defineStore } from 'pinia'
 export const useSpinnerStore = defineStore('spinner', () => {
   const spin = ref(false)
   const spun = ref(false)
-  const anim = ref(false)
+  const wait = ref(false)
 
   function spinList() {
     spin.value = true
-    anim.value = setTimeout(() => skipSpin(), 5000)
+    wait.value = setTimeout(() => skipSpin(), 3000)
   }
 
   function skipSpin() {
     spin.value = false
     spun.value = true
-    clearTimeout(anim.value)
+    clearTimeout(wait.value)
   }
 
   function stopSpin() {
     spin.value = false
     spun.value = false
-    clearTimeout(anim.value)
+    clearTimeout(wait.value)
   }
 
   return { spin, spun, spinList, skipSpin, stopSpin }
