@@ -1,35 +1,37 @@
 <script setup>
   import { computed } from 'vue'
   import { Toolbar } from 'primevue'
+  import { useSpinnerStore } from '@/stores/spinner'
   import { useOptionsStore } from '@/stores/options'
 
   defineProps({ path: { type: String, required: true } })
 
+  const spinner = useSpinnerStore()
   const options = useOptionsStore()
-  const spinning = computed(() => options.spin || options.spun)
+  const hasSpin = computed(() => spinner.spin || spinner.spun)
 </script>
 
 <template>
   <Toolbar>
     <template #start>
       <Button v-if="path == '/list'" icon="pi pi-bars" severity="info" 
-        rounded text @click="options.showopts = true" />
+        rounded text @click="options.open = true" />
       <Button v-else icon="pi pi-pencil" severity="info"
         size="small" rounded text as="router-link" to="/list" />
     </template>
 
     <template #center>
-      <Button v-if="path == '/' && !spinning"
+      <Button v-if="path == '/' && !hasSpin"
         size="large" icon="pi pi-sync pi-spin" severity="help"
-        raised rounded text @click="options.spinList()" />
+        raised rounded text @click="spinner.spinList()" />
 
-      <Button v-else-if="options.spin"
+      <Button v-else-if="spinner.spin"
         size="large" icon="pi pi-angle-double-right" severity="help"
-        raised rounded text @click="options.skipSpin()" />
+        raised rounded text @click="spinner.skipSpin()" />
 
-      <Button v-else-if="options.spun"
+      <Button v-else-if="spinner.spun"
         size="large" icon="pi pi-times" severity="help"
-        raised rounded text @click="options.stopSpin()" />
+        raised rounded text @click="spinner.stopSpin()" />
 
       <Button v-else
         size="large" icon="pi pi-home" severity="help"

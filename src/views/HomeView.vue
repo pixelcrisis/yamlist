@@ -1,10 +1,10 @@
 <script setup>
   import SpinPane from '@/components/SpinPane.vue'
   import PickPane from '@/components/PickPane.vue'
-  import { useOptionsStore } from '@/stores/options'
+  import { useSpinnerStore } from '@/stores/spinner'
   import { useLibraryStore } from '@/stores/library'
 
-  const options = useOptionsStore()
+  const spinner = useSpinnerStore()
   const library = useLibraryStore()
 </script>
 
@@ -22,6 +22,6 @@
 
   </section>
 
-  <SpinPane v-if="options.spin" />
-  <PickPane v-if="options.spun" />
+  <SpinPane v-if="spinner.spin" />
+  <PickPane v-if="spinner.spun" />
 </template>

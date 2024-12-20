@@ -15,7 +15,7 @@
   
   <MainBar :path="viewed()" />
 
-  <Drawer header="Options" v-model:visible="options.showopts">
+  <Drawer header="Options" v-model:visible="options.open">
     <OptPane />
   </Drawer>
 </template>
