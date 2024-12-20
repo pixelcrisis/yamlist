@@ -12,7 +12,7 @@ import router from './router'
 import {
   Divider, Fluid, FocusTrap,
   InputText, InputIcon, IconField,
-  Button, ButtonGroup, Card
+  Button, ButtonGroup, Card, Drawer
 } from 'primevue'
 
 const app = createApp(App)
@@ -25,6 +25,7 @@ app.use(PrimeVue, {
 app.component('Card', Card)
 app.component('Fluid', Fluid)
 app.component('Button', Button)
+app.component('Drawer', Drawer)
 app.component('Divider', Divider)
 app.component('InputText', InputText)
 app.component('InputIcon', InputIcon)

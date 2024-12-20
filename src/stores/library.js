@@ -1,20 +1,28 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
+const dummyListA = [
+  { title: "Movie 1" }, { title: "Movie 2" }, { title: "Movie 3" }
+]
+
+const dummyListB = [
+  { title: "Movie A" }, { title: "Movie B" }, { title: "Movie C" }
+]
+
 export const useLibraryStore = defineStore('library', () => {
-  const currList = ref(0)
-  const currName = ref('Interests')
-  const fullList = ref([
-    { id: 0, name: 'Interests' },
-    { id: 1, name: 'Suggestions' }
+  const listAll = ref([
+    { id: 0, name: 'Interests', list: [ ...dummyListA ], active: true },
+    { id: 1, name: 'Suggestions', list: [ ...dummyListB ] }
   ])
-  
-  function loadList (id) {
-    let lib = fullList.value.find(e => e.id == id)
-    if (!lib) return console.log(`list does not exist`)
-    currList.value = lib.id
-    currName.value = lib.name
+
+  const current = computed(() => listAll.value.find(e => e.active))
+
+  function getList (id) {
+    listAll.value.forEach(m => {
+      if (m.active) m.active = false
+      if (m.id == id) m.active = true
+    })
   }
 
-  return { currList, currName, fullList, loadList }
+  return { listAll, current, getList }
 })

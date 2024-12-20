@@ -14,3 +14,12 @@ header {
 section {
   padding-bottom: 110px;
 }
+
+.p-button {
+  line-height: 21px;
+  text-decoration: none;
+}
+
+.p-button.list {
+  margin-bottom: 10px;
+}

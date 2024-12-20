@@ -13,16 +13,7 @@
 
   <section>
     <Button fluid raised size="large" severity="contrast" class="list"
-      v-for="list in library.fullList" :label="list.name" as="router-link" to="/" 
-      @click="library.loadList(list.id)" />
+      v-for="list in library.listAll" :label="list.name" as="router-link" to="/" 
+      @click="library.getList(list.id)" />
   </section>
 </template>
-
-<style scoped>
-  .list {
-    margin-bottom: 10px;
-  }
-  .p-button {
-    text-decoration: none;
-  }
-</style>
