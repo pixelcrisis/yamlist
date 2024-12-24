@@ -1,18 +1,11 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-
-const dummyListA = [
-  { title: "Movie 1" }, { title: "Movie 2" }, { title: "Movie 3" }
-]
-
-const dummyListB = [
-  { title: "Movie A" }, { title: "Movie B" }, { title: "Movie C" }
-]
+import { listA, listB } from './dummy'
 
 export const useLibraryStore = defineStore('library', () => {
   const listAll = ref([
-    { id: 0, name: 'Interests', list: [ ...dummyListA ], active: true },
-    { id: 1, name: 'Suggestions', list: [ ...dummyListB ] }
+    { id: 0, name: 'Interests', list: [ ...listA ], active: true },
+    { id: 1, name: 'Suggestions', list: [ ...listB ] }
   ])
 
   const results = ref({})

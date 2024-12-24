@@ -1,69 +1,65 @@
 <script setup>
-  import { computed } from 'vue'
-  import { Toolbar } from 'primevue'
+  import { RouterLink } from 'vue-router'
   import { useSpinnerStore } from '@/stores/spinner'
   import { useOptionsStore } from '@/stores/options'
   import { useLibraryStore } from '@/stores/library'
+
+  import { 
+    ArrowPathRoundedSquareIcon, QueueListIcon, 
+    SquaresPlusIcon, WrenchScrewdriverIcon, HomeIcon
+  } from '@heroicons/vue/24/outline'
 
   defineProps({ path: { type: String, required: true } })
 
   const spinner = useSpinnerStore()
   const options = useOptionsStore()
   const library = useLibraryStore()
-  const hasSpin = computed(() => spinner.spin || spinner.spun)
 
   function spin() {
     library.random()
-    spinner.spinList()
+    spinner.stage1 = true
   }
 </script>
 
 <template>
-  <Toolbar>
-    <template #start>
-      <Button v-if="path == '/list'" icon="pi pi-bars" severity="info" 
-        rounded text @click="options.open = true" />
-      <Button v-else icon="pi pi-pencil" severity="info"
-        size="small" rounded text as="router-link" to="/list" />
-    </template>
+  <div class="btm-nav" data-theme="cmyk">
 
-    <template #center>
-      <Button v-if="path == '/' && !hasSpin"
-        size="large" icon="pi pi-sync pi-spin" severity="help"
-        raised rounded text @click="spin" />
+    <button v-if="path != '/list'">
+      <RouterLink to="/list">
+        <QueueListIcon class="size-6 text-primary" />
+      </RouterLink>
+    </button>
+    <button v-else>
+      <WrenchScrewdriverIcon class="size-6 text-primary" 
+        @click="options.open = true"/>
+    </button>
 
-      <Button v-else-if="spinner.spin"
-        size="large" icon="pi pi-angle-double-right" severity="help"
-        raised rounded text @click="spinner.skipSpin()" />
 
-      <Button v-else-if="spinner.spun"
-        size="large" icon="pi pi-times" severity="help"
-        raised rounded text @click="spinner.stopSpin()" />
+    <button v-if="path == '/'" class="rocker">
+      <ArrowPathRoundedSquareIcon class="size-9 text-success" @click="spin()" />
+    </button>
+    <button v-else>
+      <RouterLink to="/">
+        <HomeIcon class="size-8 text-success" />
+      </RouterLink>
+    </button>
 
-      <Button v-else
-        size="large" icon="pi pi-home" severity="help"
-        raised rounded text as="router-link" to="/" />
-    </template>
 
-    <template #end>
-      <Button size="large" icon="pi pi-plus-circle" severity="primary"  
-        rounded text as="router-link" to="/find" />
-    </template>
-  </Toolbar>
+    <button>
+      <RouterLink to="/find">
+        <SquaresPlusIcon class="size-6 text-info" />
+      </RouterLink>
+    </button>
+  </div>
 </template>
 
 <style scoped>
-  .p-toolbar {
-    position: fixed; z-index: 100;
-    bottom: 30px; left: 30px; right: 30px;
+  .btm-nav {
     border-radius: 3rem;
-    background: #fff;
+    width: calc(100% - 60px);
+    left: 30px; right: 30px; bottom: 30px;
   }
-  .p-button > * {
-    animation-duration: 15s !important;
-  }
-  .p-button {
-    line-height: 21px;
-    text-decoration: none;
+  .animate-spin {
+    animation-duration: 20s;
   }
 </style>

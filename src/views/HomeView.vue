@@ -1,29 +1,29 @@
 <script setup>
-  import SpinPane from '@/components/SpinPane.vue'
-  import PickPane from '@/components/PickPane.vue'
-  import { useSpinnerStore } from '@/stores/spinner'
+  import { RouterLink } from 'vue-router'
   import { useLibraryStore } from '@/stores/library'
-import { Divider } from 'primevue';
+  import { QueueListIcon } from '@heroicons/vue/24/outline'
 
-  const spinner = useSpinnerStore()
   const library = useLibraryStore()
 </script>
 
 <template>
   <div class="wrap">
     <header>
-      <Button fluid outlined :label="library.current.name" severity="secondary"
-        as="router-link" to="/list" />
+      <RouterLink to="/list">
+        <h2>
+          <QueueListIcon class="float-start size-5" />
+          {{ library.current.name }}
+        </h2>
+      </RouterLink>
     </header>
+
+    <div class="divider"></div>
     
-    <Divider />
-
     <section>
-      <Button fluid outlined size="large" severity="contrast" class="list"
-        v-for="list in library.current.list" :label="list.title" />
-    </section>
 
-    <SpinPane v-if="spinner.spin" />
-    <PickPane v-if="spinner.spun" />
+    </section>
   </div>
 </template>
+
+<style scoped>
+</style>

@@ -1,8 +1,8 @@
 <script setup>
-  import { useRouter, RouterView } from 'vue-router'
-  import { useOptionsStore } from './stores/options'
+  import { useRouter } from 'vue-router'
   import MainBar from './components/MainBar.vue'
-  import OptPane from './components/OptPane.vue'
+  import ShowOpts from './components/ShowOpts.vue'
+  import ShowSpin from './components/ShowSpin.vue'
 
   const router = useRouter()
   const viewed = () => router.currentRoute.value.path
@@ -11,20 +11,17 @@
     if (!from.name) to.meta.transition = 'fade'
     else to.meta.transition = left ? 'slide-left' : 'slide-right'
   })
-
-  const options = useOptionsStore()
 </script>
 
 <template>
   <MainBar :path="viewed()" />
 
-  <RouterView v-slot="{ Component, route }">
-    <Transition :name="route.meta.transition">
-      <component :is="Component" />
-    </Transition>
+  <RouterView v-slot="{ Component, route }" class="prose">
+    <transition :name="route.meta.transition">
+      <component :key="route.path" :is="Component" />
+    </transition>
   </RouterView>
-
-  <Drawer header="Options" v-model:visible="options.open">
-    <OptPane />
-  </Drawer>
+  
+  <ShowOpts />
+  <ShowSpin />
 </template>

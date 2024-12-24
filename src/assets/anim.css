@@ -1,0 +1,26 @@
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes rocker {
+  0% { rotate: 0deg; }
+  25% { rotate: 10deg; }
+  50% { rotate: 0deg; }
+  75% { rotate: -10deg; }
+  100% { rotate: 0deg; }
+}
+
+@keyframes scrolling {
+  0% { transform: translateY(0) }
+  100% { transform: translateY(-100%) }
+}
+
+.fade-in,
+.overlay {
+  animation: fadeIn 0.25s;
+}
+
+.rocker {
+  animation: rocker 3s linear infinite;
+}

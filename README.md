@@ -1,21 +1,29 @@
-# yamlist - *y*et *a*nother *m*edia list
+# yamlist
 
-Designed to be simple and used quickly. Primary focus? Removing the guesswork. Why suffer choosing through choosing what to put on? Leave it to fate. The luck of the draw. A roll of the dice. The flip of the coin. The...button...in the app...
+This template should help get you started developing with Vue 3 in Vite.
 
-We'll spin the wheel for you so you don't have to choose - and you can blame us instead of yourself.
+## Recommended IDE Setup
 
-## Installation
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-Project is still in a completely useless state. If you know what you're doing, you know what you're doing. More to come.
+## Customize configuration
 
-## Contributing
+See [Vite Configuration Reference](https://vite.dev/config/).
 
-Opening a pull request or an issue is a good first move. It's always good to have your first meeting be in a public setting, and we can see if there's a spark between us.
+## Project Setup
 
-## License
+```sh
+npm install
+```
 
-See **Installation**. Right now there's nothing. If you would like to steal my nothing, go ahead. This will be updated at a later date, so check back as I figure out what I want to even do with this project.
+### Compile and Hot-Reload for Development
 
-## Credits
+```sh
+npm run dev
+```
 
-me - [pixelcrisis](https://github.com/pixelcrisis)
+### Compile and Minify for Production
+
+```sh
+npm run build
+```

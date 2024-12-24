@@ -2,26 +2,37 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useSpinnerStore = defineStore('spinner', () => {
-  const spin = ref(false)
-  const spun = ref(false)
-  const wait = ref(false)
+  const stage1 = ref(false) // show options
+  const stage2 = ref(false) // show spinner
+  const stage3 = ref(false) // show results
+  const _delay = ref(false) // skip storage
 
-  function spinList() {
-    spin.value = true
-    wait.value = setTimeout(() => skipSpin(), 3000)
+  function spin() {
+    stage1.value = false
+    stage2.value = true
+    _delay.value = setTimeout(() => skip(), 2000)
   }
 
-  function skipSpin() {
-    spin.value = false
-    spun.value = true
-    clearTimeout(wait.value)
+  function skip() {
+    stage2.value = false
+    stage3.value = true
+    clearTimeout(_delay.value)
   }
 
-  function stopSpin() {
-    spin.value = false
-    spun.value = false
-    clearTimeout(wait.value)
+  function stop() {
+    stage2.value = false
+    stage3.value = false
+    clearTimeout(_delay.value)
   }
 
-  return { spin, spun, spinList, skipSpin, stopSpin }
+  function quit() {
+    stage1.value = false
+    stop()
+  }
+
+  function show() {
+    return stage1 || stage2 || stage3
+  }
+
+  return { stage1, stage2, stage3, spin, skip, stop, quit, show }
 })
