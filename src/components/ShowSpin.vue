@@ -15,18 +15,40 @@
 
 <template>
   <PopOver title="Getting Ready..." v-if="spinner.stage1" @close="spinner.quit()">
-    <select id="time" class="select select-primary w-full max-w-xs">
-      <option value="0" selected>Any Duration</option>
-      <option value="30">Under 30 Minutes</option>
-      <option value="45">30 - 60 Minutes</option>
-      <option value="60">Over 60 Minutes</option>
-    </select>
-    <select id="type" class="select select-accent w-full max-w-xs">
-      <option value="any" selected>Any Style</option>
-      <option value="tv">TV Shows</option>
-      <option value="mv">Movies</option>
-      <option value="av">Anime</option>
-    </select>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <span class="label-text">Under 30 Minutes</span>
+        <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      </label>
+      <label class="label cursor-pointer">
+        <span class="label-text">From 30 - 60 Minutes</span>
+        <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      </label>
+      <label class="label cursor-pointer">
+        <span class="label-text">Over 60 Minutes</span>
+        <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      </label>
+    </div>
+    <div class="divider"></div>
+    
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <span class="label-text">Movies</span>
+        <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      </label>
+      <label class="label cursor-pointer">
+        <span class="label-text">TV Shows</span>
+        <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      </label>
+      <label class="label cursor-pointer">
+        <span class="label-text">Anime</span>
+        <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      </label>
+      <label class="label cursor-pointer">
+        <span class="label-text">Documentary</span>
+        <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      </label>
+    </div>
     <template #footer>
       <button class="btn btn-block btn-secondary" @click="spinner.spin()">Spin The Wheel</button>
     </template>
