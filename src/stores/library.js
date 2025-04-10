@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { listA, listB } from './dummy'
 
-export const useLibraryStore = defineStore('library', () => {
+export const useLibrary = defineStore('library', () => {
   const listAll = ref([
     { id: 0, name: 'Interests', list: [ ...listA ], active: true },
     { id: 1, name: 'Suggestions', list: [ ...listB ] }

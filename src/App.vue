@@ -1,8 +1,8 @@
 <script setup>
   import { useRouter } from 'vue-router'
-  import MainBar from './components/MainBar.vue'
-  import ShowOpts from './components/ShowOpts.vue'
-  import ShowSpin from './components/ShowSpin.vue'
+  import HomePanel from './partials/HomePanel.vue'
+  import OptsPanel from './partials/OptsPanel.vue'
+  import SpinPanel from './partials/SpinPanel.vue'
 
   const router = useRouter()
   const viewed = () => router.currentRoute.value.path
@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <MainBar :path="viewed()" />
+  <HomePanel :path="viewed()" />
 
   <RouterView v-slot="{ Component, route }" class="prose">
     <transition :name="route.meta.transition">
@@ -22,6 +22,6 @@
     </transition>
   </RouterView>
   
-  <ShowOpts />
-  <ShowSpin />
+  <OptsPanel />
+  <SpinPanel />
 </template>

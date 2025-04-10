@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="overlay" @click="$emit('close')">
-    <div class="card bg-base-300 text-base-content" @click.stop>
+  <div class="overlay" @click.self="$emit('close')">
+    <div class="card bg-base-300 text-base-content">
       <div class="card-body">
         <h2 class="card-title mb-5">{{ props.title }}</h2>
         

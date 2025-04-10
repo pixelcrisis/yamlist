@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useSpinnerStore = defineStore('spinner', () => {
+export const useSpinner = defineStore('spinner', () => {
   const stage1 = ref(false) // show options
   const stage2 = ref(false) // show spinner
   const stage3 = ref(false) // show results
