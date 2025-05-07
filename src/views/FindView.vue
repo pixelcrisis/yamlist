@@ -3,10 +3,11 @@
   import MediaCard from '@/components/MediaCard.vue'
   
   import { ref, onMounted } from 'vue'
-  import { format, search } from '@/assets/utils'
+  import { formatOMDB, search } from '@/assets/media'
   import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 
   const query = ref()
+  const going = ref(false)
   const error = ref(false)
   const first = ref(false)
   const found = ref(false)
@@ -14,6 +15,8 @@
   onMounted(() => query.value.focus())
 
   function find() {
+    if (going.value) return
+    going.value = true
     error.value = false
     first.value = false
     found.value = false
@@ -21,6 +24,7 @@
       if (res.error) error.value = true
       if (res.first) first.value = res.first
       if (res.found) found.value = res.found
+      going.value = false
     })
   }
 </script>
@@ -42,13 +46,16 @@
 
     <div v-if="first">
       <h4 class="text-center">BEST GUESS</h4>
-      <MediaCard :data="format(first)" />
+      <MediaCard :data="formatOMDB(first)" />
     </div>
     <div v-if="found">
-      <h4 class="text-center">MORE RESULTS</h4>
-      <MediaCard v-for="res in found.Search" :data="format(res)" />
+      <h4 class="text-center">ALL RESULTS</h4>
+      <MediaCard v-for="res in found.Search" :data="formatOMDB(res)" />
     </div>
-    <div v-if="error" class="err text-center">Somewithing Went Wrong! Try Again?</div>
+    <div class="text-center">
+      <div v-if="error" class="err">Somewithing Went Wrong! Try Again?</div>
+      <span v-if="going" class="loading loading-lg loading-infinity text-primary"></span>
+    </div>
   </PagePanel>
 </template>
 

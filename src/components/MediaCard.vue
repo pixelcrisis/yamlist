@@ -5,7 +5,7 @@
 <template>
   <div class="card shadow-md" :style="{ 'background-image': `url(${ data.photo })` }">
     <div class="card-body not-prose">
-      <h2 class="card-title">{{ data.title }}</h2>
+      <h2 class="card-title">{{ data.title }} ({{ data.years }})</h2>
       <p>{{ data.blurb }}</p>
     </div>
   </div>
