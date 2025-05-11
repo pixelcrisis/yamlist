@@ -26,5 +26,6 @@ export function formatOMDB(data) {
   obj.score = data.imdbRating
   obj.votes = data.imdbVotes
   obj.parts = data.totalSeasons
+  console.log(obj)
   return obj
 }
