@@ -25,8 +25,8 @@
       </div>
     </div>
     <template #footer>
-      <button class="btn btn-block" @click="spinner.skip()">
-        <ForwardIcon class="size-6 text-neutral" />
+      <button class="btn" @click="spinner.skip()">
+        <ForwardIcon class="size-6 text-accent" />
       </button>
     </template>
 

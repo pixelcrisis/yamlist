@@ -2,6 +2,7 @@
   import CardWrap from '../partials/CardWrap.vue'
 
   import { useSpinner } from '@/stores/spinner'
+  import { ArrowRightCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline'
 
   const spinner = useSpinner()
 </script>
@@ -44,7 +45,12 @@
     </div>
     
     <template #footer>
-      <button class="btn btn-block btn-secondary" @click="spinner.spin()">Spin The Wheel</button>
+      <button class="btn" @click="spinner.quit()">
+        <XCircleIcon class="size-8 text-error" />
+      </button>
+      <button class="btn" @click="spinner.spin()">
+        <ArrowRightCircleIcon class="size-8 text-success" />
+      </button>
     </template>
   </CardWrap>
 </template>

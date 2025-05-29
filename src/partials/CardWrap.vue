@@ -13,14 +13,14 @@
         <slot></slot>
       </div>
     </div>
-    <div class="close">
-      <slot name="footer">
-        <button class="btn btn-lg btn-block" @click="$emit('close')">
-          <span v-if="props.close">props.close</span>
-          <XMarkIcon class="size-9 text-error inline-block" v-else />
-        </button>
+    <div class="foot bg-base-200" v-if="$slots.footer">
+      <slot name="footer" @close="$emit('close')">
       </slot>
     </div>
+    <button class="foot btn" @click="$emit('close')" v-if="!$slots.footer">
+      <span v-if="props.close">props.close</span>
+      <XMarkIcon class="size-9 text-error inline-block" v-else />
+    </button>
   </div>
 </template>
 
@@ -37,15 +37,17 @@
     left: 30px; right: 30px; bottom: 120px;
   }
 
-  .close {
-    width: 100%;
-    padding: 0 30px;
+  .foot {
+    padding: 8px 0;
+    min-height: 64px;
     text-align: center;
     position: absolute;
-    bottom: 30px; left: 0;
+    border-radius: 3rem;
+    width: calc(100% - 60px);
+    bottom: 30px; left: 30px; right: 30px;
   }
 
-  .close .btn {
+  .foot .btn {
     border-radius: 1rem;
   }
 </style>
