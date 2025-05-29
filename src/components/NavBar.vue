@@ -21,10 +21,10 @@
 
 <template>
   <div class="btm-nav" data-theme="cmyk">
-    <button v-if="path == '/list'" @click="options.open = true">
+    <button v-if="path == '/listing'" @click="options.open = true">
       <WrenchScrewdriverIcon class="size-6 text-primary" />
     </button>
-    <RouterLink to="/list" v-if="path != '/list'">
+    <RouterLink to="/listing" v-if="path != '/listing'">
       <QueueListIcon class="size-6 text-primary" />
     </RouterLink>
 
@@ -35,7 +35,7 @@
       <HomeIcon class="size-8 text-success" />
     </RouterLink>
 
-    <RouterLink to="/find">
+    <RouterLink to="/search">
       <SquaresPlusIcon class="size-6 text-info" />
     </RouterLink>
   </div>
