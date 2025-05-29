@@ -12,9 +12,7 @@ const doctorWho = {
 
 
 export const listA = [
-  doctorWho, { title: "Movie 2" }, { title: "Movie 3" }
 ]
 
 export const listB = [
-  { title: "Movie A" }, doctorWho, { title: "Movie C" }
 ]

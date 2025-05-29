@@ -1,9 +1,10 @@
 <script setup>
   import PageWrap from '@/partials/PageWrap.vue'
   import DataWrap from '@/partials/DataWrap.vue'
+  import InfoWrap from '@/partials/InfoWrap.vue'
   
   import { ref, onMounted } from 'vue'
-  import { formatOMDB, search } from '@/assets/media'
+  import { formatOMDB, search, detail } from '@/assets/media'
   import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 
   const query = ref()
@@ -11,6 +12,7 @@
   const error = ref(false)
   const first = ref(false)
   const found = ref(false)
+  const think = ref(false)
 
   onMounted(() => query.value.focus())
 
@@ -27,10 +29,15 @@
       going.value = false
     })
   }
+
+  function check(res) {
+    think.value = formatOMDB(res.data)
+  }
 </script>
 
 <template>
   <PageWrap>
+    <InfoWrap :data="think" v-if="think" @close="think = false" />
 
     <template #header>
       <label class="input input-bordered input-primary flex items-center gap-2">
@@ -48,12 +55,19 @@
 
     <div v-if="first">
       <h4 class="text-center">BEST GUESS</h4>
-      <DataWrap :data="formatOMDB(first)" />
+      <DataWrap 
+        :data="formatOMDB(first)"
+        @click="detail(first.imdbID, check)">
+      </DataWrap>
     </div>
 
     <div v-if="found">
       <h4 class="text-center">ALL RESULTS</h4>
-      <DataWrap v-for="res in found.Search" :data="formatOMDB(res)" />
+      <DataWrap
+        v-for="res in found.Search" 
+        :data="formatOMDB(res)"
+        @click="detail(res.imdbID, check)">
+      </DataWrap>
     </div>
 
     <div class="text-center">
@@ -69,5 +83,8 @@
   section,
   .btn-primary {
     margin-top: 20px;
+  }
+  .card {
+    cursor: pointer;
   }
 </style>
