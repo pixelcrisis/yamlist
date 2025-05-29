@@ -1,5 +1,5 @@
 <script setup>
-  import CardModal from './CardModal.vue'
+  import CardWrap from '../partials/CardWrap.vue'
 
   import { useSpinner } from '@/stores/spinner'
 
@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <CardModal title="Getting Ready..." @close="spinner.quit()">
+  <CardWrap title="Getting Ready..." @close="spinner.quit()">
     <div class="form-control">
       <label class="label cursor-pointer">
         <span class="label-text">Under 30 Minutes</span>
@@ -46,5 +46,5 @@
     <template #footer>
       <button class="btn btn-block btn-secondary" @click="spinner.spin()">Spin The Wheel</button>
     </template>
-  </CardModal>
+  </CardWrap>
 </template>

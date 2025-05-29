@@ -14,16 +14,8 @@
   overflow: scroll;
 }
 
-.overlay {
-  z-index: 100;
-  padding: 30px;
-  background: rgba(0,0,0,0.5);
-}
-
-.overlay > .card {
-  position: absolute;
-  max-height: calc(100vh - 150px);
-  left: 30px; right: 30px; bottom: 120px;
+.card + .card {
+  margin-top: 10px;
 }
 
 header { padding-top: 30px; }

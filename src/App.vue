@@ -1,9 +1,11 @@
 <script setup>
-  import { useRouter } from 'vue-router'
-  import HomePanel from './partials/HomePanel.vue'
-  import OptsPanel from './partials/OptsPanel.vue'
-  import SpinPanel from './partials/SpinPanel.vue'
+  import Config from './views/Config.vue'
+  import Spinner from './views/Spinner.vue'
 
+  import NavBar from './components/NavBar.vue'
+
+  import { useRouter } from 'vue-router'
+  
   const router = useRouter()
   const viewed = () => router.currentRoute.value.path
   router.afterEach((to, from) => {
@@ -14,7 +16,7 @@
 </script>
 
 <template>
-  <HomePanel :path="viewed()" />
+  <NavBar :path="viewed()" />
 
   <RouterView v-slot="{ Component, route }" class="prose">
     <transition :name="route.meta.transition">
@@ -22,6 +24,6 @@
     </transition>
   </RouterView>
   
-  <OptsPanel />
-  <SpinPanel />
+  <Config />
+  <Spinner />
 </template>

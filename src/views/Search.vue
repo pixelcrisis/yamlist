@@ -1,6 +1,6 @@
 <script setup>
-  import PagePanel from '@/partials/PagePanel.vue'
-  import MediaCard from '@/components/MediaCard.vue'
+  import PageWrap from '@/partials/PageWrap.vue'
+  import DataWrap from '@/partials/DataWrap.vue'
   
   import { ref, onMounted } from 'vue'
   import { formatOMDB, search } from '@/assets/media'
@@ -30,7 +30,8 @@
 </script>
 
 <template>
-  <PagePanel>
+  <PageWrap>
+
     <template #header>
       <label class="input input-bordered input-primary flex items-center gap-2">
         <input type="text" class="grow" 
@@ -39,6 +40,7 @@
         </input>
         <MagnifyingGlassIcon class="size-5" />
       </label>
+
       <button class="btn btn-block btn-primary" @click="find()">
         Search
       </button>
@@ -46,17 +48,20 @@
 
     <div v-if="first">
       <h4 class="text-center">BEST GUESS</h4>
-      <MediaCard :data="formatOMDB(first)" />
+      <DataWrap :data="formatOMDB(first)" />
     </div>
+
     <div v-if="found">
       <h4 class="text-center">ALL RESULTS</h4>
-      <MediaCard v-for="res in found.Search" :data="formatOMDB(res)" />
+      <DataWrap v-for="res in found.Search" :data="formatOMDB(res)" />
     </div>
+
     <div class="text-center">
       <div v-if="error" class="err">Somewithing Went Wrong! Try Again?</div>
       <span v-if="going" class="loading loading-lg loading-infinity text-primary"></span>
     </div>
-  </PagePanel>
+
+  </PageWrap>
 </template>
 
 <style scoped>
@@ -64,8 +69,5 @@
   section,
   .btn-primary {
     margin-top: 20px;
-  }
-  .card + .card {
-    margin-top: 10px;
   }
 </style>

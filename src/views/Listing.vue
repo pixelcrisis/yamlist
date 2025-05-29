@@ -1,5 +1,5 @@
 <script setup>
-  import PagePanel from '@/partials/PagePanel.vue'
+  import PageWrap from '@/partials/PageWrap.vue'
   import { RouterLink } from 'vue-router'
 
   import { Bars4Icon } from '@heroicons/vue/24/outline'
@@ -11,17 +11,21 @@
 </script>
 
 <template>
-  <PagePanel title="My Lists" :icon="FolderPlusIcon">
+  <PageWrap title="My Lists" :icon="FolderPlusIcon">
+
     <RouterLink to="/">
+
       <button :class="colorize()"
         v-for="list in library.listAll"
         @click="library.getList(list.id)">
-        <Bars4Icon class="float-start size-5" />
-        {{ list.name }}
+
+        <Bars4Icon class="float-start size-5" /> {{ list.name }}
         <div class="badge badge-lg float-end">{{ list.list.length }}</div>
       </button>
+
     </RouterLink>
-  </PagePanel>
+    
+  </PageWrap>
 </template>
 
 <style scoped>

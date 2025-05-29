@@ -1,5 +1,5 @@
 <script setup>
-  import CardModal from './CardModal.vue'
+  import CardWrap from '../partials/CardWrap.vue'
 
   import { useLibrary } from '@/stores/library'
   import { useSpinner } from '@/stores/spinner'
@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <CardModal title="Spinning The Wheel..." @close="spinner.quit()">
+  <CardWrap title="Spinning The Wheel..." @close="spinner.quit()">
     <div class="spinner">
       <div class="spinning">
         <button :class="`${ colorize() } btn-block`" v-for="list in library.current.list">
@@ -30,7 +30,7 @@
       </button>
     </template>
 
-  </CardModal>
+  </CardWrap>
 </template>
 
 <style scoped>

@@ -43,7 +43,7 @@
 
 <style scoped>
   .btm-nav {
-    z-index: 9999;
+    z-index: 9998;
     border-radius: 3rem;
     width: calc(100% - 60px);
     left: 30px; right: 30px; bottom: 30px;
