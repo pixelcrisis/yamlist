@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <PageWrap :title="library.current.name" :icon="QueueListIcon" link="/list">
+  <PageWrap :title="library.current.name" :icon="QueueListIcon" link="/listing">
 
     <DataWrap v-for="w in library.current.list" :data="w" />
     
