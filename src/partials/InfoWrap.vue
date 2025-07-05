@@ -10,7 +10,7 @@
         <div class="meta absolute">
           <div class="badge">{{ data.score }}/10</div>
           <div class="badge">{{ data.rated }}</div>
-          <div class="badge">{{ data.years  }}</div>
+          <div class="badge">{{ data.years }}</div>
         </div>
       </figure>
       
